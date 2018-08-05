@@ -1,0 +1,19 @@
+{
+  "Absolute Phrase" : "Словосочетание",
+  "Adjective" : "Прилагательное",
+  "Adverb" : "Наречие",
+  "Determiner":"Артикль",
+  "Clauses" : "",
+  "Complements" : "Дополнение",
+  "Coordinated Adjective" : "",
+  "Conjuction": "Союз",
+  "Interjection": "Междометие",
+  "Noun" : "Существительное",
+  "Phrase" : "Словестный оборот",
+  "Predicate" : "Сказуемое",
+  "Preposition" : "Предлог",
+  "Pronoun":"Местоимение",
+  "Subject": "Предмет",
+  "Verb" : "Глагол",
+  "Numeral" : "Число"
+}

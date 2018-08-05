@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', ['data' => App\Models\Word::paginate(30)]);
 });
+
+Route::get('/', 'ShowWordsController@welcome')->name('welcome');
 
 

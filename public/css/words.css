@@ -1,0 +1,44 @@
+.words__switcher {
+  margin: 2em 0 0.5em 15px; }
+
+.word__header {
+  background: darkblue;
+  color: lightgray; }
+
+.table_words {
+  font-size: 1.3em; }
+  .table_words td:nth-child(1) {
+    width: 4em; }
+  .table_words td:nth-child(2) {
+    width: 10em; }
+  .table_words td:nth-child(3) {
+    width: 10em; }
+
+.cell__translation {
+  display: none; }
+  .cell__translation.shown {
+    display: inherit; }
+
+.oxford_block {
+  background: rgba(200, 200, 200, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 70%;
+  margin: 10px 0; }
+
+.word__list {
+  width: 100%;
+  margin-bottom: 2em; }
+.word__item:nth-child(2n) .row {
+  background: beige; }
+.word__item .row {
+  padding: 0.5em 0; }
+  .word__item .row:first-child {
+    border-top: 2px solid dimgrey; }
+.word__definitions {
+  display: none; }
+
+.text-translation {
+  display: none; }
+
+/*# sourceMappingURL=words.css.map */
