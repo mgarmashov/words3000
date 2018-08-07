@@ -13,6 +13,7 @@
     @include('components.paginator')
     <div class="word__header container-fluid sticky-top">
         <div class="row">
+            <div class="word__cell word__cell--number col-1"></div>
             <div class="word__header--cell word__cell--number col-1">#</div>
             <div class="word__header--cell word__cell--word col-4">Слово</div>
             <div class="word__header--cell word__cell--transcription col-3">Транскрипция</div>
@@ -21,13 +22,14 @@
     </div>
     <div class="word__list container-fluid">
         @foreach($data as $word)
-
         <div class="word__item" data-id="{{ $word->id }}">
             <div class="row">
                 <div class="word__cell word__cell--number col-1">
-                    <a class="btn btn-outline-secondary btn-sm btn-favorite" href="#">
-                        <i class="far fa-star"></i>
-                    </a>
+                    @auth
+                        <a class="btn btn-outline-secondary btn-sm btn-favorite {{ $word->isFavorite ? 'active' : '' }}" href="#">
+                            <i class="far fa-star"></i>
+                        </a>
+                    @endauth
                 </div>
                 <div class="word__cell word__cell--number col-1">{{ $word->id }}</div>
                 <div class="word__cell word__cell--word col-4">{{ $word->word }}</div>
@@ -37,8 +39,8 @@
                 </div>
             </div>
             <div class="row word__definitions">
-@if($word->oxfordNormilized)
-                @foreach ($word->oxfordNormilized as $oxfordEntity)
+@if($word->oxfordNormalized)
+                @foreach ($word->oxfordNormalized as $oxfordEntity)
                     <div class="col-sm col-sm-4 col-md-3">
                         <div class="oxford_block">
                             <b>Форма: </b>{{ __($oxfordEntity['lexicalCategory']) }}<br>

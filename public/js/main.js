@@ -40,17 +40,17 @@
     });
 
 
-    $('.btn-favorite').click(function (event) {
-        event.preventDefault();
-
-        // var item = $(this).parents($('.word__item'));
-
-        if ($(this).hasClass('active')){
-            $(this).removeClass('active');
-        } else {
-            $(this).addClass('active');
-        }
-    });
+    // $('.btn-favorite').click(function (event) {
+    //     event.preventDefault();
+    //
+    //     // var item = $(this).parents($('.word__item'));
+    //
+    //     if ($(this).hasClass('active')){
+    //         $(this).removeClass('active');
+    //     } else {
+    //         $(this).addClass('active');
+    //     }
+    // });
 
 
 

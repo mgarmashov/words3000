@@ -16,6 +16,39 @@
 
 
 <script src="{{ asset('js/main.js') }}"></script>
+<script>
+    $('.btn-favorite').click(function (event) {
+        event.preventDefault();
+        var button = $(this);
+        if($(this).hasClass('active')){
+            console.log('is active');
+            $.get({
+                url: "{{ route('unset-favorite') }}",
+                data: {
+                    word_id: button.closest('.word__item').attr('data-id')
+                },
+                success: function (data) {
+                    button.removeClass('active');
+                }
+            });
+
+        } else {
+
+            $.get({
+                url: "{{ route('set-favorite') }}",
+                data: {
+                    word_id: button.closest('.word__item').attr('data-id')
+                },
+                success: function (data) {
+                    button.addClass('active');
+                }
+            });
+
+        }
+
+
+    });
+</script>
 </body>
 </html>
 
