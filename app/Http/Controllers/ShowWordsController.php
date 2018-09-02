@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ShowWordsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Word::paginate(30);
+        $data = Word::query();
+        if($request->onlyFavorite == 1) {
+            $data = $data->favorite();
+        }
+        $data = $data->paginate(30);
 
         foreach ($data as $word){
 

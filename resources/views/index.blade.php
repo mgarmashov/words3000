@@ -8,12 +8,17 @@
 
     @include('components.header')
 
-    <div class="btn-group words__switcher"><a class="btn btn-secondary active" href="#">Все слова</a><a class="btn btn-secondary" href="#">Отмеченные</a></div>
+    <div class="btn-group words__switcher">
+        <a class="btn btn-secondary @if(Request::get('onlyFavorite') != 1) active @endif" href="{{ route('index') }}">Все слова</a>
+        <a class="btn btn-secondary @if(Request::get('onlyFavorite') == 1) active @endif" href="{{ route('index', ['onlyFavorite' => 1]) }}">Отмеченные
+    </a></div>
 
     @include('components.paginator')
     <div class="word__header container-fluid sticky-top">
         <div class="row">
-            <div class="word__cell word__cell--number col-1"></div>
+            @auth
+                <div class="word__cell word__cell--number col-1"></div>
+            @endauth
             <div class="word__header--cell word__cell--number col-1">#</div>
             <div class="word__header--cell word__cell--word col-4">Слово</div>
             <div class="word__header--cell word__cell--transcription col-3">Транскрипция</div>
@@ -24,13 +29,13 @@
         @foreach($data as $word)
         <div class="word__item" data-id="{{ $word->id }}">
             <div class="row">
-                <div class="word__cell word__cell--number col-1">
-                    @auth
+                @auth
+                    <div class="word__cell word__cell--number col-1">
                         <a class="btn btn-outline-secondary btn-sm btn-favorite {{ $word->isFavorite ? 'active' : '' }}" href="#">
                             <i class="far fa-star"></i>
                         </a>
-                    @endauth
-                </div>
+                    </div>
+                @endauth
                 <div class="word__cell word__cell--number col-1">{{ $word->id }}</div>
                 <div class="word__cell word__cell--word col-4">{{ $word->word }}</div>
                 <div class="word__cell word__cell--transcription col-3">{{ $word->transcription }}</div>

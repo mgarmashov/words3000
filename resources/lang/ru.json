@@ -21,6 +21,7 @@
 
 
   "Username" : "Имя пользователя",
+  "E-Mail Address" : "E-mail",
   "Password" : "Пароль",
   "Login" : "Войти",
   "Register" : "Регистрация"

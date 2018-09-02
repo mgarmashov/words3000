@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Word extends Model
 {
@@ -63,5 +64,20 @@ class Word extends Model
         return $output;
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User', 'users_words');
+    }
 
+    public function scopeFavorite($query)
+    {
+        if (Auth::check()){
+//            return $query->whereIn('id', function() {});
+//            $word->isFavorite = Auth::user()->words()->find($word->id);
+            return $query->whereHas('users', function($q) {
+                $q->where('users.id', Auth::user()->id);
+            });
+        }
+
+    }
 }
