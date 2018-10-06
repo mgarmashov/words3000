@@ -11,8 +11,13 @@
 |
 */
 
-Route::get('/', 'ShowWordsController@index')->name('index');
+Route::group(['middleware' => 'lang'], function() {
+    Route::get('/', 'ShowWordsController@index')->name('index');
+    Auth::routes();
+});
 
+
+Route::get('/lang/{locale?}', 'LangController@set')->name('lang');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('set-favorite', 'ActionsWordsController@setFavorite')->name('set-favorite');
@@ -20,7 +25,7 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
-Auth::routes();
+
 // Authentication Routes...
 //$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 //$this->post('login', 'Auth\LoginController@login')->name('toLogin');
@@ -36,4 +41,4 @@ Auth::routes();
 //$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 //$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
