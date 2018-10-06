@@ -21,12 +21,12 @@ class Word extends Model
         $data = $this->oxford_json()->results[0];
         $output = [];
         try{
-//        dd($data);
-        foreach ($data->lexicalEntries as $lexicalEntry){
-            $output[] = $this->getEntity($lexicalEntry);
-        }
+
+            foreach ($data->lexicalEntries as $lexicalEntry){
+                $output[] = $this->getEntity($lexicalEntry);
+            }
         } catch (\Exception $e){
-//            dd($data);
+
         }
         return $output;
     }
@@ -55,7 +55,7 @@ class Word extends Model
                 }
             }
         } catch (\Exception $e){
-            dd($lexicalEntry);
+
         }
 
 
@@ -72,8 +72,6 @@ class Word extends Model
     public function scopeFavorite($query)
     {
         if (Auth::check()){
-//            return $query->whereIn('id', function() {});
-//            $word->isFavorite = Auth::user()->words()->find($word->id);
             return $query->whereHas('users', function($q) {
                 $q->where('users.id', Auth::user()->id);
             });
