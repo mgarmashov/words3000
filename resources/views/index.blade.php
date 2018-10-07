@@ -78,6 +78,7 @@
 
     @include('components.paginator')
 
+    @include('components.footer')
 @endsection
 
 @push('scripts')

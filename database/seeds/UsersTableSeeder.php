@@ -19,13 +19,5 @@ class UsersTableSeeder extends Seeder
             'email' => 'mikhail.garmashov@gmail.com',
             'password' => Hash::make('moscow')
         ]);
-
-        factory(User::class)->create([
-            'login' => 'Thomas',
-            'name' => 'Thomas',
-            'surname' => 'Sanchez',
-            'email' => 'tomwsanchez@yahoo.com',
-            'password' => Hash::make('0000')
-        ]);
     }
 }
