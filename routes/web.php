@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => 'lang'], function() {
+Route::group(['middleware' => ['web', 'lang'] ], function() {
     Route::get('/', 'ShowWordsController@index')->name('index');
     Auth::routes();
 });
@@ -19,11 +19,26 @@ Route::group(['middleware' => 'lang'], function() {
 
 Route::get('/lang/{locale?}', 'LangController@set')->name('lang');
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['web', 'auth'] ], function(){
     Route::get('set-favorite', 'ActionsWordsController@setFavorite')->name('set-favorite');
     Route::get('unset-favorite', 'ActionsWordsController@unsetFavorite')->name('unset-favorite');
 });
 
+
+//admin
+Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => ['web', 'admin'] ], function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('dashboard');
+//    Route::get('/upload', 'Admin\UploadExcelController@showPage')->name('uploadExcelPage');
+//    Route::get('/data/{sheet?}', 'Admin\DataController@showPage')->name('data');
+//    Route::post('/uploadFile', 'Admin\UploadExcelController@uploadFile')->name('uploadFile');
+//
+//    Route::get('/statistics', 'Admin\StatisticsController@showPage')->name('statistics');
+//
+//    Route::get('/content', 'Admin\ChangeContentController@showPage')->name('content');
+//    Route::post('/content/update', 'Admin\ChangeContentController@updateContent')->name('post-content');
+});
 
 
 // Authentication Routes...
