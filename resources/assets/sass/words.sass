@@ -1,0 +1,62 @@
+//table
+  width: 90%
+
+.words__switcher
+  margin: 2em 0 0.5em 15px
+
+.word__header
+  //margin: 2em 0 0 0
+  background: darkblue
+  color: lightgray
+.table_words
+  font-size: 1.3em
+  td:nth-child(1)
+    width: 4em
+  td:nth-child(2)
+    width: 10em
+  td:nth-child(3)
+    width: 10em
+.cell__translation
+  //visibility: hidden
+  display: none
+  &.shown
+    display: inherit
+
+.oxford_block
+  background: rgba(200,200,200,0.3)
+  border-radius: 5px
+  padding: 5px
+  font-size: 70%
+  margin: 10px 0
+
+//tr
+  height: 2em
+
+.word
+  &__list
+    width: 100%
+    margin-bottom: 2em
+  &__item
+    &:nth-child(2n) .row
+      background: beige
+    .row
+      padding: 0.5em 0
+      &:first-child
+        border-top: 2px solid dimgrey
+        //border-bottom: 1px solid dimgrey
+
+  &__cell
+
+    &--number
+
+    &--word
+
+    &--transcription
+
+    &--translation
+      //display: none
+  &__definitions
+    display: none
+
+.text-translation
+  display: none
