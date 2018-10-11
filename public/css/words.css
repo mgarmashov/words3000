@@ -1,3 +1,21 @@
+.about-short {
+  display: block;
+  width: 100%;
+}
+
+.about-short .card-header {
+  position: relative;
+  width: 100%;
+}
+
+.close-btn {
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  top: 1em;
+  right: 1em;
+}
+
 .words__switcher {
   margin: 2em 0 0.5em 15px;
 }

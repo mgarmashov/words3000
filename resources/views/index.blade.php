@@ -9,6 +9,7 @@
 
     @include('components.header')
     @include('components.about-short')
+
     <div class="btn-group words__switcher">
         <a class="btn btn-secondary @if(Request::get('onlyFavorite') != 1) active @endif" href="{{ route('index') }}">{{ __('All words') }}</a>
         <a class="btn btn-secondary @if(Request::get('onlyFavorite') == 1) active @endif" href="{{ route('index', ['onlyFavorite' => 1]) }}">{{ __('Favorite') }}
