@@ -5,11 +5,11 @@
                 <div class="card-header">
                     {{ __('What is it?') }}
                     <a class="close-btn" data-toggle="collapse" href="#info-block" role="button" aria-expanded="true" aria-controls="info-block">
-                        @if( $_COOKIE['about'] != 'hide') <i class="fas fa-angle-up"></i> @else <i class="fas fa-angle-down"></i> @endif
+                        @if( !isset($_COOKIE['about']) || $_COOKIE['about'] != 'hide') <i class="fas fa-angle-up"></i> @else <i class="fas fa-angle-down"></i> @endif
 
                     </a>
                 </div>
-                <div class="card-body collapse @if( $_COOKIE['about'] != 'hide') show @endif" id="info-block">
+                <div class="card-body collapse @if( !isset($_COOKIE['about']) || $_COOKIE['about'] != 'hide') show @endif" id="info-block">
                     @if(\Illuminate\Support\Facades\App::getLocale() === 'ru')
                         <h1>3000 английский слов</h1>
 
