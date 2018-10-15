@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Words 3000 Admin Panel | @yield('title')</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="icon" type="image/png" href="{{ asset('img/favicon_admin.ico') }}">
@@ -108,6 +109,7 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/adminLTE/js/adminlte.min.js') }}"></script>
 
+<script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')
 
 </body>

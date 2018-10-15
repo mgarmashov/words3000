@@ -16,7 +16,12 @@
             <li class="header"> </li>
             <li {{ setActive('admin.dashboard') }}>
                 <a href="{{ route('admin.dashboard') }}">
-                    <i class="fa fa-file-excel-o"></i> <span>Main</span>
+                    <i class="fa fa-info"></i> <span>{{ __('Main') }}</span>
+                </a>
+            </li>
+            <li {{ setActive('admin.users') }}>
+                <a href="{{ route('admin.users') }}">
+                    <i class="fa fa-users"></i> <span>{{ __('Users') }}</span>
                 </a>
             </li>
             {{--<li {{ setActive('admin.uploadExcelPage') }}>--}}

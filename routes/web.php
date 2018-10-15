@@ -34,7 +34,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => ['web', 'admin']
     Route::get('/', function () {
         return view('admin.index');
     })->name('dashboard');
-//    Route::get('/upload', 'Admin\UploadExcelController@showPage')->name('uploadExcelPage');
+    Route::get('/users', 'Admin\UsersController@showPage')->name('users');
+
+    Route::get('/users-list', 'Admin\UsersController@showList')->name('users-list');
 //    Route::get('/data/{sheet?}', 'Admin\DataController@showPage')->name('data');
 //    Route::post('/uploadFile', 'Admin\UploadExcelController@uploadFile')->name('uploadFile');
 //
