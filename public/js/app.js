@@ -28502,7 +28502,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28865,6 +28865,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: "App",
   mounted: function mounted() {
     console.log('Смонтирован App.vue');
+    console.log(laroute.route('words-get'));
   }
 });
 
