@@ -1,6 +1,6 @@
 import Vue from 'vue'
-// import vuex from 'vuex'
-// import vuetify from 'vuetify'
+import vuex from 'vuex'
+import vuetify from 'vuetify'
 // import App from './App'
 // import store from './store'
 import router from './router'
@@ -12,13 +12,14 @@ import App from './components/App'
 require('./bootstrap')
 window.Vue = require('vue')
 
-// Vue.use(Vuetify)
+Vue.use(vuetify)
 // Vue.component('app-buy-modal', BuyModalComponent)
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
   el: '#app',
   router,
+  vuex,
   ml,
   render: h => h(App)
 })
