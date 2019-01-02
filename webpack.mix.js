@@ -11,5 +11,26 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.autoload({
+    'jquery': ['$', 'window.jQuery', 'jQuery'],
+});
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            'Api': path.resolve(__dirname, 'resources/assets/admin/js/api/'),
+            'Components': path.resolve(__dirname, 'resources/assets/admin/js/components/'),
+            'Constants': path.resolve(__dirname, 'resources/assets/admin/js/constants/'),
+            'Container': path.resolve(__dirname, 'resources/assets/admin/js/container/'),
+            'Views': path.resolve(__dirname, 'resources/assets/admin/js/views/'),
+            'Helpers': path.resolve(__dirname, 'resources/assets/admin/js/helpers/'),
+            'Themes': path.resolve(__dirname, 'resources/assets/admin/js/themes/')
+        }
+    }
+});
+
+mix
+   // .js('resources/assets/js/app.js', 'public/js')
+   .js('resources/assets/admin/js/main.js', 'public/admin/js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .sass('resources/assets/sass/words.sass', 'public/css');

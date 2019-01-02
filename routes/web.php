@@ -11,6 +11,10 @@
 |
 */
 
+//Route::get('/', function () {
+//    return view('admin.index');
+//});
+
 Route::group(['middleware' => ['web', 'lang'] ], function() {
     Route::get('/', 'ShowWordsController@index')->name('index');
     Auth::routes();
