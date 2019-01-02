@@ -13,8 +13,7 @@ require('./bootstrap')
 window.Vue = require('vue')
 
 Vue.use(vuetify)
-// Vue.component('app-buy-modal', BuyModalComponent)
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('login-modal', require('./components/loginModal'));
 
 const app = new Vue({
   el: '#app',
