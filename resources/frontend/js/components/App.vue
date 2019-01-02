@@ -24,10 +24,18 @@
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
+
         <v-toolbar color="indigo" dark fixed app>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Application</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items class="hidden-sm-and-down">
+
+                <login-modal :ad="ad"></login-modal>
+                <v-btn flat>Регистрация</v-btn>
+            </v-toolbar-items>
         </v-toolbar>
+
         <v-content>
             <v-container fluid fill-height>
                 <v-layout
