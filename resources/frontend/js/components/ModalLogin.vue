@@ -1,71 +1,55 @@
 <template>
     <v-layout row justify-center>
-        <v-dialog v-model="dialog" persistent max-width="600px">
-            <v-btn slot="activator" color="primary"  dark>Войти</v-btn>
+        <v-dialog v-model="modalLoginVisible" persistent max-width="600px" @keydown.esc="hideModalLogin">
             <v-card>
                 <v-card-title>
-                    <span class="headline">User Profile</span>
+                    <span class="headline">Login</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container grid-list-md>
                         <v-layout wrap>
-                            <v-flex xs12 sm6 md4>
-                                <v-text-field label="Legal first name*" required></v-text-field>
-                            </v-flex>
-                            <v-flex xs12 sm6 md4>
-                                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-                            </v-flex>
-                            <v-flex xs12 sm6 md4>
-                                <v-text-field
-                                        label="Legal last name*"
-                                        hint="example of persistent helper text"
-                                        persistent-hint
-                                        required
-                                ></v-text-field>
-                            </v-flex>
-                            <v-flex xs12 sm6 md4>
-                                <v-text-field
-                                        v-model="name"
-                                        :rules="nameRules"
-                                        :counter="10"
-                                        label="Name"
-                                        required
-                                ></v-text-field>
-                                <v-text-field
-                                        v-model="email"
-                                        :rules="emailRules"
-                                        label="E-mail"
-                                        required
-                                ></v-text-field>
-                            </v-flex>
-                            <v-flex xs12>
-                                <v-text-field label="Email*" required></v-text-field>
-                            </v-flex>
-                            <v-flex xs12>
-                                <v-text-field label="Password*" type="password" required></v-text-field>
-                            </v-flex>
-                            <v-flex xs12 sm6>
-                                <v-select
-                                        :items="['0-17', '18-29', '30-54', '54+']"
-                                        label="Age*"
-                                        required
-                                ></v-select>
-                            </v-flex>
-                            <v-flex xs12 sm6>
-                                <v-autocomplete
-                                        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                                        label="Interests"
-                                        multiple
-                                ></v-autocomplete>
-                            </v-flex>
+                            <v-form v-model="valid" ref="form" validation>
+                                <v-flex xs12>
+                                    <v-text-field
+                                            prepend-icon="person"
+                                            name="email"
+                                            label="E-mail"
+                                            type="text"
+                                            v-model="email"
+                                            required
+                                            :rules="emailRules">
+                                    </v-text-field>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field
+                                            id="password"
+                                            prepend-icon="lock"
+                                            name="password"
+                                            label="Password"
+                                            type="password"
+                                            v-model="password"
+                                            required
+                                            :rules="passwordRules"
+                                    ></v-text-field>
+                                </v-flex>
+                            </v-form>
                         </v-layout>
                     </v-container>
                     <small>*indicates required field</small>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-                    <v-btn color="blue darken-1" flat @click="dialog = false">Save</v-btn>
+                    <v-btn
+                            color="blue darken-1"
+                            flat
+                            @click="hideModalLogin"
+                    >Close</v-btn>
+                    <v-btn
+                            color="blue darken-1"
+                            flat
+                            @click="login"
+                            :disabled="!valid"
+                    >Login</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -73,15 +57,50 @@
 </template>
 
 <script>
+
   export default {
     name: 'ModalLogin',
-    data: () => ({
-      dialog: false
-    }),
+    data () {
+      return {
+        email: 'mikhail.garmashov@gmail.com',
+        password: 'moscow',
+        valid: false,
+        emailRules: [
+          v => !!v || 'Email is required'
+        ],
+        passwordRules: [
+          v => (v && v.length >= 3) || 'Password must be longer than 3 symbols'
+        ]
+      }
+    },
+    computed: {
+      modalLoginVisible () {
+        return this.$store.getters.modalLoginVisible
+      }
+    },
     methods: {
-      ...mapMutations([
-        'hideModal',
-      ]),
+      hideModalLogin () {
+        this.$store.dispatch('hideModalLogin')
+      },
+      login () {
+        if (this.$refs.form.validate()) {
+          let user = {
+            email: this.email,
+            password: this.password
+          }
+          // console.log(this.$auth)
+          this.$store.dispatch('loginUser', {email: this.email, password: this.password, $auth: this.$auth})
+            .then(() => {
+
+              // this.$router.push('/')
+              this.hideModalLogin()
+            })
+            .catch(err => console.log(err))
+        }
+      }
+    },
+    mounted() {
+
     },
   }
 </script>

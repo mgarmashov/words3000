@@ -90,7 +90,6 @@
       mounted() {
           this.getWords().then((response) => {
             this.words = response.data.data
-            console.log(this.words)
           })
 
 
