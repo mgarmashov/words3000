@@ -74,8 +74,14 @@
 
 <script>
   export default {
+    name: 'ModalLogin',
     data: () => ({
       dialog: false
-    })
+    }),
+    methods: {
+      ...mapMutations([
+        'hideModal',
+      ]),
+    },
   }
 </script>

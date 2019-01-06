@@ -12,8 +12,9 @@
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "lord/laroute": "2.*",
         "snapappointments/bootstrap-select": "^1.13",
-        "lord/laroute" : "2.*"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
