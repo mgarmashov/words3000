@@ -1,5 +1,7 @@
-<link rel="stylesheet" href="{{ asset("assets/bootstrap-select/dist/css/bootstrap-select.css") }}">
-<link rel="stylesheet" href="{{ asset("assets/flag-icon-css-master/css/flag-icon.css") }}">
+@push('after_styles')
+    <link rel="stylesheet" href="{{ asset("assets/bootstrap-select/dist/css/bootstrap-select.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/flag-icon-css-master/css/flag-icon.css") }}">
+@endpush
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="{{ route('index') }}">{{ config('app.name', '3000 Words') }}</a>
 

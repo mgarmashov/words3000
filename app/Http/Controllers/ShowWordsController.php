@@ -9,13 +9,27 @@ use Illuminate\Support\Facades\Auth;
 
 class ShowWordsController extends Controller
 {
-    public function index(Request $request)
+    public function index()
+    {
+        $data = $this->getWords();
+        return view('index', ['data' => $data]);
+    }
+
+    public function favorite(Request $request)
+    {
+        $data = $this->getWords(true, 20);
+        return view('index', ['data' => $data]);
+    }
+
+    private function getWords($onlyFavorite = false, $itemsForPage = 100)
     {
         $data = Word::query();
-        if($request->onlyFavorite == 1) {
+
+        if ($onlyFavorite == true) {
             $data = $data->favorite();
         }
-        $data = $data->paginate(30);
+
+        $data = $data->paginate($itemsForPage);
 
         foreach ($data as $word){
 
@@ -26,6 +40,6 @@ class ShowWordsController extends Controller
 
         }
 
-        return view('index', ['data' => $data]);
+        return $data;
     }
 }

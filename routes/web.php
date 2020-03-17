@@ -13,6 +13,7 @@
 
 Route::group(['middleware' => ['web', 'lang'] ], function() {
     Route::get('/', 'ShowWordsController@index')->name('index');
+    Route::get('/favorite', 'ShowWordsController@favorite')->name('favorite');
     Auth::routes();
 });
 
